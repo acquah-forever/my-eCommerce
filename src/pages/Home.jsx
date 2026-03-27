@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getProducts } from '../data/products'
+import ProductCard from '../components/ProductCard'
 
 const Home = () => {
   const products = getProducts()
@@ -16,20 +17,7 @@ const Home = () => {
       </div>
       <div className='grid space-x-7 space-y-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
         {products.map((product) => (
-          <div className='rounded-xl p-3 shadow-xl  space-x-5  px-5 space-y-5' key={product.id}>
-            <div>
-              <img className='rounded-2x' src={product.image} />
-            </div>
-            <div className='space-y-4'>
-              <h3 className='text-lg font-semibold'>{product.name}</h3>
-              <p className='text-sky-400 font-bold text-xl'>£ {product.price}</p>
-            </div>
-            <div className='flex space-x-3'>
-              <Link className='bg-slate-500 text-white p-2 rounded text-sm'>View Details</Link>
-              <button className='bg-sky-400 text-white p-2 rounded text-sm'>Add to Cart</button>
-            </div>
-          </div>
-
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </div>
