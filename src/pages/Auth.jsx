@@ -34,7 +34,7 @@ const Auth = () => {
             },
             maxLength:{
               value:12,
-              message:'Password must be less than 12 characters',
+              message:'Password must be at most 12 characters',
             }
           })} />
           {errors.password && (<p className='text-sm text-red-500'>{errors.password.message}</p>)}
