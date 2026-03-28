@@ -8,7 +8,7 @@ import NavBar from './components/NavBar'
 
 const App = () => {
   return (
-    <div>
+    <div className='bg-slate-100 min-h-screen'>
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
