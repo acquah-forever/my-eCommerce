@@ -4,6 +4,7 @@ import { getProducts } from '../data/products'
 import ProductCard from '../components/ProductCard'
 
 const Home = () => {
+  // call function for getProducts to map through
   const products = getProducts()
 
   return (

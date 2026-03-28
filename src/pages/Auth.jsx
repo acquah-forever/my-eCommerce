@@ -1,13 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import {useForm} from 'react-hook-form'
+import {AuthContext} from '../context/AuthContext'
 
 const Auth = () => {
   const{register,handleSubmit,formState:{errors}} = useForm()
+  const{signUp} = useContext(AuthContext)
 
   const [mode,setMode] = useState('signup')
 
-  function onSubmit(){
-    alert('signed up')
+  function onSubmit(data){
+    signUp(data.email, data.password)
   }
   return (
     <div className='w-80 px-5 py-10 mx-auto shadow-2xl mt-10 '>
