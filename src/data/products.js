@@ -20,7 +20,7 @@ const products = [
   {
     id: 3,
     name: "Laptop Mouse",
-    price: 49.99,
+    price: 48.99,
     image:
       "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop",
     description:
