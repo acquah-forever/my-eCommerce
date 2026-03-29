@@ -35,8 +35,12 @@ export default function AuthProvider({ children }) {
         const users = JSON.parse(localStorage.getItem('users') || '[]')
         const user = users.find(u => u.email === email && u.password === password)
         if(!user){
-            return{success:false, error:'Invalid'}
+            return{success:false, error:'Invalid email or password'}
         }
+        localStorage.setItem('currentUserEmail', email)
+        setUser({ email })
+        return { success: true }
+    }
 
     function logout() {
         localStorage.removeItem('currentUserEmail')
@@ -44,7 +48,7 @@ export default function AuthProvider({ children }) {
 
     }
 
-    return <AuthContext.Provider value={{ signUp, user, logout }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ signUp, user, logout, logIn }}>{children}</AuthContext.Provider>
 
-}
+
 }

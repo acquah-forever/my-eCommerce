@@ -4,12 +4,16 @@ import {AuthContext} from '../context/AuthContext'
 
 const Auth = () => {
   const{register,handleSubmit,formState:{errors}} = useForm()
-  const{signUp,user,logout} = useContext(AuthContext)
+  const{signUp,user,logout,login} = useContext(AuthContext)
 
   const [mode,setMode] = useState('signup')
 
   function onSubmit(data){
-    signUp(data.email, data.password)
+    if(mode === 'signup'){
+      signUp(data.email, data.password) 
+    } else {
+      login(data.email, data.password)
+    }
   }
   return (
     <div className='w-80 px-5 py-10 mx-auto shadow-2xl mt-10 '>
@@ -43,7 +47,7 @@ const Auth = () => {
         </div>
 
         <button type='submit' className='mt-5 bg-sky-500 p-3 w-20 rounded text-white cursor-pointer'>{mode==='signup' ? 'Sign Up' : 'Log In'}</button>
-        <button className='bg-gray-400 p-2 cursor-pointer 'onClick={() => logout()}>LogOut</button>
+        
         
       </form>
 
