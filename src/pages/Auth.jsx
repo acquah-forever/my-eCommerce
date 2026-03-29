@@ -4,7 +4,7 @@ import {AuthContext} from '../context/AuthContext'
 
 const Auth = () => {
   const{register,handleSubmit,formState:{errors}} = useForm()
-  const{signUp} = useContext(AuthContext)
+  const{signUp,user,logout} = useContext(AuthContext)
 
   const [mode,setMode] = useState('signup')
 
@@ -18,6 +18,8 @@ const Auth = () => {
       </div>
 
       <form className='flex flex-col'onSubmit={handleSubmit(onSubmit)}>
+        {user && <p>logged in</p>}
+
         <div className='mt-7 space-y-1 flex flex-col'>
           <label htmlFor='email'>Email:</label>
           <input className='border p-1 rounded' type="email" id='email' {...register('email',{required: 'Email is Required'})} />
@@ -41,6 +43,8 @@ const Auth = () => {
         </div>
 
         <button type='submit' className='mt-5 bg-sky-500 p-3 w-20 rounded text-white cursor-pointer'>{mode==='signup' ? 'Sign Up' : 'Log In'}</button>
+        <button className='bg-gray-400 p-2 cursor-pointer 'onClick={() => logout()}>LogOut</button>
+        
       </form>
 
       
