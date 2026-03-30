@@ -42,13 +42,13 @@ export default function AuthProvider({ children }) {
         return { success: true }
     }
 
-    function logout() {
+    function logOut() {
         localStorage.removeItem('currentUserEmail')
         setUser(null)
 
     }
 
-    return <AuthContext.Provider value={{ signUp, user, logout, logIn }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ signUp, user, logOut, logIn }}>{children}</AuthContext.Provider>
 
 
 }

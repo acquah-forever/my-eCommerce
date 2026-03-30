@@ -4,16 +4,12 @@ import {AuthContext} from '../context/AuthContext'
 
 const Auth = () => {
   const{register,handleSubmit,formState:{errors}} = useForm()
-  const{signUp,user,logout,login} = useContext(AuthContext)
+  const{signUp,user,logOut,logIn} = useContext(AuthContext)
 
   const [mode,setMode] = useState('signup')
 
   function onSubmit(data){
-    if(mode === 'signup'){
-      signUp(data.email, data.password) 
-    } else {
-      login(data.email, data.password)
-    }
+    signUp(data.email,data.password)
   }
   return (
     <div className='w-80 px-5 py-10 mx-auto shadow-2xl mt-10 '>
