@@ -11,7 +11,7 @@ const Home = () => {
     <div className='flex flex-col mt-20'>
       <div className='flex flex-col justify-center items-center space-y-5'>
         <h1 className='text-3xl font-semibold'>Welcome to Shophub</h1>
-        <p className='text-sm'>Discover Amaxing Products at Grat Prices</p>
+        <p className='text-sm'>Discover Amaxing Products at Greate Prices</p>
       </div>
       <div className='p-5 mb-5'>
         <h2 className='font-semibold text-2xl'>Our Products</h2>

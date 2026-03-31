@@ -20,7 +20,7 @@ export default function AuthProvider({ children }) {
         // save users info to avoid logging off if user refreshes
         setUser({ email })
         return { success: true }
-    }
+    } 
 
     function logIn(email, password) {
         const users = JSON.parse(localStorage.getItem('users') || '[]')
@@ -33,13 +33,12 @@ export default function AuthProvider({ children }) {
         return { success: true }
     }
 
-    function logOut() {
+    function logOut( ) {
         localStorage.removeItem('currentUserEmail')
         setUser(null)
 
     }
 
     return <AuthContext.Provider value={{ signUp, user, logOut, logIn }}>{children}</AuthContext.Provider>
-
-
+     
 }

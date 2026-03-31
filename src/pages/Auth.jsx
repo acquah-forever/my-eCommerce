@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { AuthContext } from '../context/AuthContext'
-import { useNavigate  } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Auth = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { signUp, user, logOut, logIn } = useContext(AuthContext)
+  const { signUp, logIn } = useContext(AuthContext)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
   const [mode, setMode] = useState('signUp')
@@ -18,21 +18,21 @@ const Auth = () => {
     } else {
       result = logIn(data.email, data.password)
     }
-    if(result.success){
+    if (result.success) {
       navigate('/')
-    }else{
+    } else {
       setError(result.error)
     }
   }
 
-  return ( 
+  return (
     <div className='w-80 px-5 py-10 mx-auto shadow-2xl mt-10 '>
       <div>
         <h1 className='text-2xl font-semibold'>{mode === 'signUp' ? 'Sign Up' : 'Log In'}</h1>
       </div>
 
       <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
-        {user && <p>logged in</p>}
+
         {error && <p className='mt-3 bg-red-200 p-2 text-red-500'>{error}</p>}
         <div className='mt-7 space-y-1 flex flex-col'>
           <label htmlFor='email'>Email:</label>
@@ -72,10 +72,10 @@ const Auth = () => {
       </div>
 
       <div className='mt-10 flex justify-center'>
-        <button className='bg-gray-300 rounded p-2 cursor-pointer'onClick={() => setMode(logOut)}>Log Out</button>
+        <button className='bg-gray-300 rounded p-2 cursor-pointer' onClick={() => setMode(logOut)}>Log Out</button>
       </div>
     </div>
-    
+
   )
 }
 
