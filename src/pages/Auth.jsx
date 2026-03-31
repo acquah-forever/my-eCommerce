@@ -1,62 +1,82 @@
-import React,{useState,useContext} from 'react'
-import {useForm} from 'react-hook-form'
-import {AuthContext} from '../context/AuthContext'
+import React, { useState, useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import { AuthContext } from '../context/AuthContext'
+import { useNavigate  } from 'react-router-dom'
 
 const Auth = () => {
-  const{register,handleSubmit,formState:{errors}} = useForm()
-  const{signUp,user,logOut,logIn} = useContext(AuthContext)
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { signUp, user, logOut, logIn } = useContext(AuthContext)
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
+  const [mode, setMode] = useState('signUp')
 
-  const [mode,setMode] = useState('signup')
-
-  function onSubmit(data){
-    signUp(data.email,data.password)
+  function onSubmit(data) {
+    setError(null)
+    let result;
+    if (mode === 'signUp') {
+      result = signUp(data.email, data.password)
+    } else {
+      result = logIn(data.email, data.password)
+    }
+    if(result.success){
+      navigate('/')
+    }else{
+      setError(result.error)
+    }
   }
-  return (
+
+  return ( 
     <div className='w-80 px-5 py-10 mx-auto shadow-2xl mt-10 '>
       <div>
-        <h1 className='text-2xl font-semibold'>{mode==='signup' ? 'Sign Up' : 'Log In'}</h1>
+        <h1 className='text-2xl font-semibold'>{mode === 'signUp' ? 'Sign Up' : 'Log In'}</h1>
       </div>
 
-      <form className='flex flex-col'onSubmit={handleSubmit(onSubmit)}>
+      <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
         {user && <p>logged in</p>}
-
+        {error && <p className='mt-3 bg-red-200 p-2 text-red-500'>{error}</p>}
         <div className='mt-7 space-y-1 flex flex-col'>
           <label htmlFor='email'>Email:</label>
-          <input className='border p-1 rounded' type="email" id='email' {...register('email',{required: 'Email is Required'})} />
+          <input className='border p-1 rounded' type="email" id='email' {...register('email', { required: 'Email is Required' })} />
           {errors.email && (<p className='text-sm text-red-500'>{errors.email.message}</p>)}
         </div>
 
 
         <div className='mt-7 space-y-1 flex flex-col'>
           <label htmlFor='password'>Password:</label>
-          <input className='border p-1 rounded' type="password" id='password' {...register('password', {required: 'Password is Required',
+          <input className='border p-1 rounded' type="password" id='password' {...register('password', {
+            required: 'Password is Required',
             minLength: {
-              value:6,
-              message:'Password must be at least 6 characters',
+              value: 6,
+              message: 'Password must be at least 6 characters',
             },
-            maxLength:{
-              value:12,
-              message:'Password must be at most 12 characters',
+            maxLength: {
+              value: 12,
+              message: 'Password must be at most 12 characters',
             }
           })} />
           {errors.password && (<p className='text-sm text-red-500'>{errors.password.message}</p>)}
         </div>
 
-        <button type='submit' className='mt-5 bg-sky-500 p-3 w-20 rounded text-white cursor-pointer'>{mode==='signup' ? 'Sign Up' : 'Log In'}</button>
-        
-        
+        <button type='submit' className='mt-5 bg-sky-500 p-3 w-20 rounded text-white cursor-pointer'>{mode === 'signUp' ? 'Sign Up' : 'Log In'}</button>
+
+
       </form>
 
-      
+
       <div className='flex justify-center mt-5'>
-      {mode === 'signup' ? 
-      (<p className='text-sm text-slate-600'>Already have an account? <span className='text-sky-400 cursor-pointer border-b'onClick={()=>setMode('login')}>Log In</span></p>
-      ) : (
-        <p className='text-sm text-slate-600'>Dont have an account? <span className='text-sky-400 cursor-pointer border-b'onClick={()=>setMode('signup')}>Sign Up</span></p>
-      )}
+        {mode === 'signUp' ?
+          (<p className='text-sm text-slate-600'>Already have an account? <span className='text-sky-400 cursor-pointer border-b' onClick={() => setMode('logIn')}>Log In</span></p>
+          ) : (
+            <p className='text-sm text-slate-600'>Dont have an account? <span className='text-sky-400 cursor-pointer border-b' onClick={() => setMode('signUp')}>Sign Up</span></p>
+          )}
+      </div>
+
+      <div className='mt-10 flex justify-center'>
+        <button className='bg-gray-300 rounded p-2 cursor-pointer'onClick={() => setMode(logOut)}>Log Out</button>
       </div>
     </div>
+    
   )
 }
- 
+
 export default Auth
