@@ -70,10 +70,6 @@ const Auth = () => {
             <p className='text-sm text-slate-600'>Dont have an account? <span className='text-sky-400 cursor-pointer border-b' onClick={() => setMode('signUp')}>Sign Up</span></p>
           )}
       </div>
-
-      <div className='mt-10 flex justify-center'>
-        <button className='bg-gray-300 rounded p-2 cursor-pointer' onClick={() => setMode(logOut)}>Log Out</button>
-      </div>
     </div>
 
   )
