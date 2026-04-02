@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
                 <p className='text-sky-400 font-bold text-xl'>£ {product.price}</p>
             </div>
             <div className='flex space-x-3'>
-                <Link className='bg-slate-500 text-white p-2 rounded text-sm'>View Details</Link>
+                <Link to = {`/products/${product.id}`} className='bg-slate-500 text-white p-2 rounded text-sm'>View Details</Link>
                 <button className='bg-sky-400 text-white p-2 rounded text-sm'>Add to Cart</button>
             </div>
         </div>
