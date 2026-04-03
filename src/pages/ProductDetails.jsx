@@ -1,27 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getProductById } from '../data/products'
 import { CartContext } from '../context/CartContext'
 
 const ProductDetails = () => {
-    const{ addToCart } = useContext(CartContext)
-    const { id } = useParams()
-    const [product, setProduct] = useState(null)
-    const navigate = useNavigate()
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+    const navigate = useNavigate();
+    const { addToCart, cartItems } = useContext(CartContext);
+
+
 
     useEffect(() => {
-        const foundProduct = getProductById(id)
+        const foundProduct = getProductById(id);
 
         if (!foundProduct) {
-            navigate('/')
-            return
+            navigate('/');
+            return;
         }
-        setProduct(foundProduct)
-    }, [id])
+        setProduct(foundProduct);
+    }, [id]);
 
     if (!product) {
-        return <h1>(Loading...)</h1>
+        return <h1>(Loading...)</h1>;
     }
+
+    const productInCart = cartItems.find((item) => item.id === product.id);
+
+    const amount = productInCart ? `(${productInCart.quantity})` : ''
 
 
     return (
@@ -33,7 +39,7 @@ const ProductDetails = () => {
                 <h1 className="text-xl font-semibold text-gray-800">{product.name}</h1>
                 <p className="text-lg text-sky-600 font-bold mt-2">£ {product.price}</p>
                 <p className="text-gray-600 mt-3">{product.description}</p>
-                <button className="mt-4 w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded transition-colors duration-200"> Add to Cart</button>
+                <button className="mt-4 w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded transition-colors duration-200" onClick={() => addToCart(product.id)}> Add to Cart {amount}</button>
             </div>
         </div>
     )
