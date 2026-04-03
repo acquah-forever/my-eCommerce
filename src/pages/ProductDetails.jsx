@@ -18,7 +18,7 @@ const ProductDetails = () => {
     }, [id])
 
     if (!product) {
-        return <h1>Loading..</h1>
+        return <h1>(Loading...)</h1>
     }
 
 
@@ -29,7 +29,7 @@ const ProductDetails = () => {
             </div>
             <div className="p-6 space-y-5">
                 <h1 className="text-xl font-semibold text-gray-800">{product.name}</h1>
-                <p className="text-lg text-sky-600 font-bold mt-2">{product.price}</p>
+                <p className="text-lg text-sky-600 font-bold mt-2">£ {product.price}</p>
                 <p className="text-gray-600 mt-3">{product.description}</p>
                 <button className="mt-4 w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded transition-colors duration-200"> Add to Cart</button>
             </div>
