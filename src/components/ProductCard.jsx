@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 
 const ProductCard = ({ product }) => {
-    const {addToCart,cartItem} = useContext(CartContext)
+    const {addToCart,cartItems} = useContext(CartContext)
 
     return (
         <div className='rounded-xl p-3 shadow-xl space-x-5 px-5 space-y-5 hover:scale-105 transition-transform duration-300'>

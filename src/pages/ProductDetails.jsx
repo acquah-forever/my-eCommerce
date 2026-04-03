@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getProductById } from '../data/products'
+import { CartContext } from '../context/CartContext'
 
 const ProductDetails = () => {
+    const{ addToCart } = useContext(CartContext)
     const { id } = useParams()
     const [product, setProduct] = useState(null)
     const navigate = useNavigate()
