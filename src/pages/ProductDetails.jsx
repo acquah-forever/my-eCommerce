@@ -9,8 +9,6 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const { addToCart, cartItems } = useContext(CartContext);
 
-
-
     useEffect(() => {
         const foundProduct = getProductById(id);
 
@@ -24,12 +22,10 @@ const ProductDetails = () => {
     if (!product) {
         return <h1>(Loading...)</h1>;
     }
-
+    
     const productInCart = cartItems.find((item) => item.id === product.id);
 
     const amount = productInCart ? `(${productInCart.quantity})` : ''
-
-
     return (
         <div className="flex justify-center gap-7 max-w-3xl  h-100 p-4 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="h-80 w-full overflow-hidden">
