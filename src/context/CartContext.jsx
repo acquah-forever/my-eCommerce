@@ -48,19 +48,29 @@ export default function CartProvider({ children }) {
 
     }
 
-    function getCartTotal(){
-        // the reduce function will loop through each cart item starting with a total
-        // amount of zero, and accumulate a value as wwe move through it.
+    function getCartTotal() {
         const total = cartItems.reduce((total, item) => {
             const product = getProductById(item.id)
             // if product is not null, do calculation else default to zero
-            return total + (product ? product.price * product.quantity : 0)
+            return total + (product ? product.price * item.quantity : 0)
         }, 0)
 
         return total
-
     }
 
-    return <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, removeFromCart, updateQuantity, getCartTotal }}>{children}</CartContext.Provider>
+    function clearCart() {
+        setCartItems([])
+    }
+
+    return <CartContext.Provider value={{
+        cartItems,
+        addToCart,
+        getCartItemsWithProducts,
+        removeFromCart,
+        updateQuantity,
+        getCartTotal,
+        clearCart
+    }}> {children}
+    </CartContext.Provider>
 
 }
