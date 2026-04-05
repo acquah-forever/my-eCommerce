@@ -16,11 +16,10 @@ export default function CartProvider({ children }) {
         if (existing) {
             const currentQuantity = existing.quantity
             // if already existing,check for quantity of existing item
-
             const updatedCartItems = cartItems.map((item) =>
                 item.id === productId ? { id: productId, quantity: currentQuantity + 1 } : item)
             // then look through the list of cart items and if the id = product.id
-            // increase the current quantity + 1
+            // increase the current quantity + 1 else leave item
             setCartItems(updatedCartItems)
 
         } else {
@@ -31,11 +30,37 @@ export default function CartProvider({ children }) {
     }
 
     function getCartItemsWithProducts() {
-        return cartItems.map(item => ({...item,product: getProductById(item.id)})).filter(item => item.product)
+        return cartItems.map(item => ({ ...item, product: getProductById(item.id) })).filter(item => item.product)
+    }
 
+    function removeFromCart(productId) {
+        setCartItems(cartItems.filter((item) => item.id !== productId))
 
     }
 
-    return <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts }}>{children}</CartContext.Provider>
+    function updateQuantity(productId, quantity) {
+        if (quantity <= 0) {
+            removeFromCart(productId)
+            return
+        }
+
+        setCartItems(cartItems.map((item) => item.id === productId ? { ...item, quantity } : item))
+
+    }
+
+    function getCartTotal(){
+        // the reduce function will loop through each cart item starting with a total
+        // amount of zero, and accumulate a value as wwe move through it.
+        const total = cartItems.reduce((total, item) => {
+            const product = getProductById(item.id)
+            // if product is not null, do calculation else default to zero
+            return total + (product ? product.price * product.quantity : 0)
+        }, 0)
+
+        return total
+
+    }
+
+    return <CartContext.Provider value={{ cartItems, addToCart, getCartItemsWithProducts, removeFromCart, updateQuantity, getCartTotal }}>{children}</CartContext.Provider>
 
 }
