@@ -13,7 +13,7 @@ const Footer = () => {
             <nav className='flex flex-col'>
                 <h1 className="footer-title text-2xl font-semibold mb-4 border-b-2 text-center">Company</h1>
                 <a className="link link-hover cursor-pointer text-lg">About us</a>
-                <a className="link link-hover cursor-pointer text-lg">Contact</a>
+                <a className="link link-hover cursor-pointer text-lg">Contact Us</a>
             
             </nav>
             <nav className='flex flex-col'>
