@@ -13,12 +13,12 @@ const Home = () => {
       <div className='relative z-50 py-20'>
         <div className='flex flex-col justify-center items-center space-y-5 text-white'>
           <h1 className='text-3xl font-semibold'>Welcome to Shophub</h1>
-          <p className='text-xl'>Discover Amaxing Products at Greate Prices</p>
+          <p className='text-xl'>Discover Amaxing Products at Great Prices</p>
         </div>
         <div className='p-5 mb-5'>
           <h2 className='font-semibold text-2xl text-white'>Our Products</h2>
         </div>
-        <div className='grid space-x-7 space-y-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+        <div className='grid space-x-7 space-y-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-10'>
           {products.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
