@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     const amount = productInCart ? `(${productInCart.quantity})` : ''
 
     return (
-        <div className='rounded-xl p-3 shadow-xl space-x-5 px-5 space-y-5 hover:scale-105 transition-transform duration-300'>
+        <div className='rounded-xl border p-3 shadow-xl space-x-5 px-5 space-y-5 hover:scale-105 transition-transform duration-300'>
             <div>
                  <img className='rounded-2x' src={product.image} alt={product.name} />
             </div>

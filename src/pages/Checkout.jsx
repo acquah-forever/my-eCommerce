@@ -6,8 +6,10 @@ const Checkout = () => {
 
   const cartItems = getCartItemsWithProducts()
   const total = getCartTotal()
+  const empty = cartItems.length === 0
 
   function placeOrder() {
+    if(empty) return
     alert('Successful Order')
     clearCart()
   }
@@ -56,7 +58,7 @@ const Checkout = () => {
               <span className="text-gray-500 text-lg font-semibold">Total</span>
               <span className="text-xl sm:text-2xl font-bold text-gray-900">£{total.toFixed(2)}</span>
             </div>
-            <button onClick={placeOrder} className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition duration-200"> Place Order</button>
+            <button onClick={placeOrder} disabled={empty} className="disabled:bg-gray-400 w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition duration-200"> Place Order</button>
           </div>
         </div>
       </div>
