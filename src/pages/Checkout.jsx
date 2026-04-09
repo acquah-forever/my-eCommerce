@@ -15,7 +15,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className='flex justify-center items-center min-h-screen relative bg-[url("https://cdn.pixabay.com/photo/2024/01/29/14/40/warehouse-8540045_1280.jpg")] bg-cover bg-center bg-fixed bg-no-repeat'>
+    <div className='mt-10 flex justify-center items-center min-h-screen relative bg-[url("https://cdn.pixabay.com/photo/2024/01/29/14/40/warehouse-8540045_1280.jpg")] bg-cover bg-center bg-fixed bg-no-repeat'>
       <div className='absolute inset-0 bg-black/30'></div>
       <div className='relative z-50 p-4 sm:p-6 lg:p-7 max-w-6xl mx-auto'>
         <div className='mb-6 sm:mb-10 px-2 sm:px-3'><h1 className='text-2xl text-white sm:text-3xl font-semibold'>Checkout</h1></div>
