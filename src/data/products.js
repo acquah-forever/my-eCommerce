@@ -37,12 +37,12 @@ const products = [
   },
   {
     id: 5,
-    name: "USB-C Hub",
+    name: "Desktop Computer",
     price: 38.99,
     image:
       "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=500&h=500&fit=crop",
     description:
-      "Multi-port USB-C hub with HDMI, USB 3.0, and SD card reader. Expand your laptop connectivity.",
+      "Neon desktop computer with thelatest software and acccessories.",
   },
   {
     id: 6,
