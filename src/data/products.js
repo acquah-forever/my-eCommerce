@@ -64,12 +64,12 @@ const products = [
   },
   {
     id: 8,
-    name: "Webcam HD",
+    name: "Auditorium for Hire",
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=500&fit=crop",
     description:
-      "1080p HD webcam with auto-focus and built-in microphone. Ideal for video calls and streaming.",
+      "Hyper acoustic auditorium fitted with surround sound quality. Perfect for watching latest movies in IMAX.",
   },
 ];
 
