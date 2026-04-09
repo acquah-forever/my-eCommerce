@@ -42,7 +42,7 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=500&h=500&fit=crop",
     description:
-      "Neon desktop computer with thelatest software and acccessories.",
+      "Neon desktop computer with the latest software and acccessories.",
   },
   {
     id: 6,
@@ -64,7 +64,7 @@ const products = [
   },
   {
     id: 8,
-    name: "Auditorium for Hire",
+    name: "Auditorium",
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=500&fit=crop",
