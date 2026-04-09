@@ -60,7 +60,7 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=500&fit=crop",
     description:
-      "Dual monitor stand with adjustable height and tilt. Frees up desk space and improves ergonomics.",
+      "Apple Iphone with the expandable memory and storage. Improvesuser experience.",
   },
   {
     id: 8,
