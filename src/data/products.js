@@ -37,12 +37,12 @@ const products = [
   },
   {
     id: 5,
-    name: "USB-C Hub",
+    name: "Desktop Computer",
     price: 38.99,
     image:
       "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=500&h=500&fit=crop",
     description:
-      "Multi-port USB-C hub with HDMI, USB 3.0, and SD card reader. Expand your laptop connectivity.",
+      "Neon desktop computer with thelatest software and acccessories.",
   },
   {
     id: 6,
@@ -60,16 +60,16 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=500&fit=crop",
     description:
-      "Dual monitor stand with adjustable height and tilt. Frees up desk space and improves ergonomics.",
+      "Apple Iphone with the expandable memory and storage. Improvesuser experience.",
   },
   {
     id: 8,
-    name: "Webcam HD",
+    name: "Auditorium for Hire",
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=500&fit=crop",
     description:
-      "1080p HD webcam with auto-focus and built-in microphone. Ideal for video calls and streaming.",
+      "Hyper acoustic auditorium fitted with surround sound quality. Perfect for watching latest movies in IMAX.",
   },
 ];
 
