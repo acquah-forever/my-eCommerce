@@ -24,7 +24,9 @@ export default function AuthProvider({ children }) {
 
     function logIn(email, password) {
         const users = JSON.parse(localStorage.getItem('users') || '[]')
+        // list of users that have acccounts already
         const user = users.find(u => u.email === email && u.password === password)
+        // find the specific user who is logging in
         if (!user) {
             return { success: false, error: 'Invalid email or password' }
         }
