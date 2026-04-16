@@ -7,7 +7,7 @@ const NavBar = () => {
   const{user,logOut} = useContext(AuthContext)
 
   return (
-    <div className='flex justify-between items-center p-5 shadow'>
+    <div className='flex justify-between items-center p-3 shadow'>
       <div className='text-2xl font-semibold'>
         <Link to='/'>Shophub</Link>
       </div>

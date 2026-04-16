@@ -9,6 +9,7 @@ export default function AuthProvider({ children }) {
 
     function signUp(email, password) {
         const users = JSON.parse(localStorage.getItem('users') || '[]')
+        // list of users that have accounts.
         if (users.find(u => u.email === email)) {
             return { success: false, error: 'Account Already Exists' }
         }
@@ -16,14 +17,16 @@ export default function AuthProvider({ children }) {
         users.push(newUser)
         localStorage.setItem('users', JSON.stringify(users))
         localStorage.setItem('currentUserEmail', email)
-        // save users info to avoid logging off if user refreshes
+        // save users info for automatically logging in
         setUser({ email })
         return { success: true }
     } 
 
     function logIn(email, password) {
         const users = JSON.parse(localStorage.getItem('users') || '[]')
+        // list of users that have acccounts already
         const user = users.find(u => u.email === email && u.password === password)
+        // find the specific user who is logging in
         if (!user) {
             return { success: false, error: 'Invalid email or password' }
         }
